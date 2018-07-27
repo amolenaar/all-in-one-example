@@ -1,0 +1,25 @@
+
+
+plugins {
+  id 'java'
+}
+
+repositories {
+  mavenCentral()
+}
+
+sourceSets {
+  main {
+    java.srcDir 'src'
+    resources.srcDir 'src'
+    output.resourcesDir java.outputDir
+  }
+  test {
+    java.srcDir 'test'
+  }
+}
+
+dependencies {
+  compile project(':JavaLibrary')
+  testCompile "junit:junit:4.12"
+}
