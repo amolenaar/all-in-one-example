@@ -6,7 +6,7 @@ set -e
 # HEAD picks up files changes (both 'added' and in working copy.
 COMMIT_RANGE=${1:-HEAD}
 
-echo "Do a build for ${COMMIT_RANGE/-a/ALL}"
+echo "Do a build for ${COMMIT_RANGE}"
 
 function build_elixir {
   docker run -v `pwd`:/work -w "/work/${1}" -u `id -u`:`id -g` elixir:1.6 mix test
