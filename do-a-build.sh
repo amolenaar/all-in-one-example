@@ -8,12 +8,12 @@ COMMIT_RANGE=${1:-HEAD}
 
 echo "Do a build for ${COMMIT_RANGE}"
 
-function build_elixir {
+build_elixir() {
   docker run -v `pwd`:/work -w "/work/${1}" -u `id -u`:`id -g` elixir:1.6 mix test
   # TODO: find projects that depend on this project
 }
 
-function build_gradle {
+build_gradle() {
   docker run -v `pwd`:/work -w "/work/${1}" -u `id -u`:`id -g` -e HOME=/work gradle:4.9-jdk8 gradle --no-daemon build
   # TODO: find projects that depend on this project
 }
