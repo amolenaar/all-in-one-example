@@ -14,11 +14,12 @@ build_elixir() {
 }
 
 build_gradle() {
-  docker run -v `pwd`:/work -w "/work/${1}" -u `id -u`:`id -g` -e HOME=/work gradle:4.9-jdk8 gradle --no-daemon build
+  docker run -v `pwd`:/work -w "/work/${1}" -u `id -u`:`id -g` -e GRADLE_USER_HOME=/work gradle:4.9-jdk8 gradle --no-daemon build
   # TODO: find projects that depend on this project
 }
 
-{ test "-a" == "${COMMIT_RANGE}" && git ls-files || git diff --name-only ${COMMIT_RANGE}; } | \
+#{ test "-a" == "${COMMIT_RANGE}" && git ls-files || git diff --name-only ${COMMIT_RANGE}; } | \
+git diff --name-only ${COMMIT_RANGE} | \
 grep '[^.].*/' | cut -f1 -d/ | sort -u | \
 while read PROJECT
 do
