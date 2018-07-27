@@ -1,0 +1,5 @@
+language: java
+
+script:
+  - echo "Should build for TRAVIS_COMMIT_RANGE '${TRAVIS_COMMIT_RANGE}'"
+
