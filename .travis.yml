@@ -1,5 +1,4 @@
 language: generic
 
 script:
-  - echo "Should build for TRAVIS_COMMIT_RANGE '${TRAVIS_COMMIT_RANGE}'"
-  - git diff --name-only ${TRAVIS_COMMIT_RANGE} | sort -u | uniq
+  - ./do-a-build.sh ${TRAVIS_COMMIT_RANGE}
