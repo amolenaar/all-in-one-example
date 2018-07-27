@@ -19,6 +19,10 @@ This repo tries to unraffle those issues.
 In modern projects it's quite common to use an SaaS service for building, such
 as [Circle CI](https://circleci.com) or [Travis CI](https://travis-ci.com).
 
+
+For Travis we do want to disable the settings for Auto Cancellation, as
+completely different artifacts may be built with each run.
+
 ## What makes a mono repo
 
 A source code repository that contains code for different
