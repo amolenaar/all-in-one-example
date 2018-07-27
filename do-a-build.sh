@@ -24,10 +24,10 @@ grep '[^.].*/' | cut -f1 -d/ | sort -u | \
 while read PROJECT
 do
   echo
-  echo "=== Project to build: $PROJECT ==="
+  echo "=== Do a build: $PROJECT ==="
   echo
 
-  test -f "${PROJECT}/build.gradle" && build_gradle "${PROJECT}"
-  test -f "${PROJECT}/mix.exs" && build_elixir "${PROJECT}"
+  test -f "${PROJECT}/build.gradle" && ( build_gradle "${PROJECT}" )
+  test -f "${PROJECT}/mix.exs" && ( build_elixir "${PROJECT}" )
 done
 
