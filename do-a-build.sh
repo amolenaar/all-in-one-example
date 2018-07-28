@@ -14,7 +14,7 @@ build_elixir() {
 }
 
 build_gradle() {
-  docker run -v `pwd`:/work -w "/work/${1}" -u `id -u`:`id -g` -e GRADLE_USER_HOME=/work gradle:4.9-jdk8 gradle --no-daemon build
+  docker run -v `pwd`:/work -w "/work/${1}" -u `id -u`:`id -g` -e GRADLE_USER_HOME=/work/.gradle gradle:4.9-jdk8 gradle --no-daemon build
   # TODO: find projects that depend on this project
 }
 
@@ -24,7 +24,7 @@ grep '[^.].*/' | cut -f1 -d/ | sort -u | \
 while read PROJECT
 do
   echo
-  echo "=== Do a build: $PROJECT ==="
+  echo "=== Do a build for $PROJECT ==="
   echo
 
   test -f "${PROJECT}/build.gradle" && ( build_gradle "${PROJECT}" )
