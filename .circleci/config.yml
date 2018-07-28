@@ -4,15 +4,12 @@ jobs:
     docker:
       - image: debian:stretch
     steps:
+      - run:
+          name: Install packages
+          command: apt-get update && apt-get install -y git
       - checkout
       - run:
-          name: Greeting
-          command: echo Hello, world.
-      - run:
-          name: Print the Current Time
-          command: date
-      - run:
-          name: Print the Current Time
+          name: Do a build
           command: |
             COMMIT_RANGE=$(echo $CIRCLE_COMPARE_URL | sed 's:^.*/compare/::g')
             ./do-a-build.sh ${COMMIT_RANGE}
