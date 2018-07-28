@@ -2,11 +2,10 @@ version: 2
 jobs:
   build:
     docker:
-      - image: debian:stretch
+      - image: circleci/buildpack-deps:stretch-scm
     steps:
-      - run:
-          name: Install packages
-          command: apt-get update && apt-get install -y git docker
+      - setup_remote_docker:   # (2)
+          docker_layer_caching: true # (3)
       - checkout
       - run:
           name: Do a build
