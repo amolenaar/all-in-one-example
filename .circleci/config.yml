@@ -12,4 +12,5 @@ jobs:
           name: Do a build
           command: |
             COMMIT_RANGE=$(echo $CIRCLE_COMPARE_URL | sed 's:^.*/compare/::g')
+            COMMIT_RANGE=8b2900a83bbb...21a1e4c5ec38
             ./do-a-build.sh ${COMMIT_RANGE}
